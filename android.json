@@ -1,0 +1,24 @@
+{
+    "expansion": false,
+    "google_play_key": null,
+    "google_play_salt": null,
+    "heap_size": "2",
+    "icon_name": "SOS from Nala",
+    "include_pil": false,
+    "include_sqlite": false,
+    "layout": null,
+    "name": "SOS from Nala",
+    "numeric_version": 1,
+    "orientation": "sensorLandscape",
+    "package": "com.sosfromnala.th",
+    "permissions": [
+        "VIBRATE",
+        "INTERNET"
+    ],
+    "source": false,
+    "store": "none",
+    "update_always": true,
+    "update_icons": true,
+    "update_keystores": true,
+    "version": "1.0"
+}
