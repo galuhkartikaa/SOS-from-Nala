@@ -22,6 +22,7 @@ image kaget = Image("kakakkaget.png")
 image kaki = Image("kaki.png")
 image adiklari2 = Image("adiklari2.png")
 image kakakadik = Image("kakakadik.png")
+image black = Image("black.png")
 image bantuan1 = Image("bantuan1.png")
 image bantuan2 = Image("bantuan2.png")
 
@@ -42,6 +43,11 @@ init python:
         store.movedplace = [int(drop.drag_name[0]), int(drop.drag_name[1])]
         
         return True
+
+screen space_invaders:
+    default game = SpaceInvaders()
+
+    add game
 
 screen jigsaw:
     
@@ -251,13 +257,20 @@ label start:
 
     show tangga
 
+    hide balik
+
     "Nala berjalan tergesa menuju rumahnya yang berada di bagian bawah kampung."
 
     show pagar
 
+    hide tangga
+
     "Nala membuka pagar sembari mengucap salam seperti biasanya."
 
     show ruangtamu
+
+    hide pagar
+
     show kakaktas with dissolve
 
     n "Assalamualaikum, bu."
@@ -402,15 +415,15 @@ label ceritakedua:
     menu:
 
         "Apa yang harus Nala lakukan pertama kali?"
-        "Makan camilan bersama Adik":
+        "Bermain game bersama Adik":
 
-            jump makan
+            jump maingame
 
-        "Bermain bersama Adik":
+        "Melukis bersama Adik":
 
             jump bermain
 
-label makan:
+label maingame:
 
     hide kakak1 with fade
 
@@ -422,11 +435,9 @@ label makan:
         matrixcolor TintMatrix("#ffffff") * SaturationMatrix(1.0)
         linear 2.0 matrixcolor TintMatrix("#ccccff") * SaturationMatrix(0.0)
 
-    n "Jaka mau camilan?"
+    n "Jaka mau main game?"
 
-    n "Kakak tadi beli di warung sebelum pulang ke rumah."
-
-    n "Ada cokelat, roti, permen. Jaka mau yang mana, Dik?"
+    n "Kakak tadi ambil konsol dari kamar."
 
     show adik1:
         matrixcolor TintMatrix("#ffffff") * SaturationMatrix(0.0)
@@ -436,7 +447,7 @@ label makan:
         matrixcolor TintMatrix("#ffffff") * SaturationMatrix(1.0)
         linear 2.0 matrixcolor TintMatrix("#ccccff") * SaturationMatrix(0.0)
 
-    j "Mau roti yang ini."
+    j "Mau main yang ini."
 
     j "Terima kasih, Kakak."
 
@@ -448,16 +459,29 @@ label makan:
         matrixcolor TintMatrix("#ffffff") * SaturationMatrix(1.0)
         linear 2.0 matrixcolor TintMatrix("#ccccff") * SaturationMatrix(0.0)
 
-    n "Kalau Kakak mau makan cokelat."
-
-    n "Makannya pelan-pelan ya, Dik."
-
-    n "Kalau mau minum, ini Kakak bawa air putih."
+    n "Sama-samaa."
 
     hide kakak1
     hide adik1
 
     stop music fadeout 1.0
+
+    hide ruangtamu
+
+    show black
+
+    n "Ayo kita main space invaders ^^"
+    call screen space_invaders
+
+    $ is_win, stats = _return
+    $ score = stats["score"]
+    $ time = stats["time"]
+    $ wave = stats["wave"]
+
+    if is_win:
+        n "Yeay kita menang."
+    else:
+        n "Yah, belum berhasil."
 
     jump mendung
 

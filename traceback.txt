@@ -1,22 +1,34 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 340, in script
-    jump ceritakedua
-ScriptError: could not find label 'ceritakedua'.
+  File "game/script.rpy", line 457, in script
+    call screen space_invaders
+  File "renpy/common/000statements.rpy", line 670, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+Exception: Screen space_invaders is not known.
+
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 340, in script
-    jump ceritakedua
-  File "C:\Users\TEJO ADI WIBOWO\Downloads\renpy-8.1.3-sdk\renpy\ast.py", line 1992, in execute
-    rv = renpy.game.script.lookup(target)
-  File "C:\Users\TEJO ADI WIBOWO\Downloads\renpy-8.1.3-sdk\renpy\script.py", line 1013, in lookup
-    raise ScriptError("could not find label '%s'." % str(original))
-ScriptError: could not find label 'ceritakedua'.
+  File "game/script.rpy", line 457, in script
+    call screen space_invaders
+  File "C:\Users\TEJO ADI WIBOWO\Downloads\renpy-8.1.3-sdk\renpy\ast.py", line 2259, in execute
+    self.call("execute")
+  File "C:\Users\TEJO ADI WIBOWO\Downloads\renpy-8.1.3-sdk\renpy\ast.py", line 2241, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "C:\Users\TEJO ADI WIBOWO\Downloads\renpy-8.1.3-sdk\renpy\statements.py", line 342, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 670, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "C:\Users\TEJO ADI WIBOWO\Downloads\renpy-8.1.3-sdk\renpy\exports.py", line 3333, in call_screen
+    show_screen(_screen_name, _transient=True, *args, **kwargs)
+  File "C:\Users\TEJO ADI WIBOWO\Downloads\renpy-8.1.3-sdk\renpy\display\screen.py", line 1220, in show_screen
+    raise Exception("Screen %s is not known.\n" % (name[0],))
+Exception: Screen space_invaders is not known.
+
 
 Windows-10-10.0.22621 AMD64
 Ren'Py 8.1.3.23091805
-SOS dari Nala 1.0
-Wed Dec  6 07:31:08 2023
+eternal_star_gui 1.0
+Tue Dec 12 21:57:12 2023
